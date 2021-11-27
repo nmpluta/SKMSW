@@ -11,8 +11,8 @@
 #define STA (1<<5)
 #define I2EN (1<<6)
 
-#define SCL_HIGH_DUTY_CYCLE 0x80
-#define SCL_LOW_DUTY_CYCLE 0x80
+#define SCL_HIGH_DUTY_CYCLE 0x96
+#define SCL_LOW_DUTY_CYCLE 0x96
 
 #define I2C_VIC (1<<9)
 #define I2C_VIC_NUMBER 9
@@ -29,7 +29,7 @@
 #define I2C_DATA_NOT_ACKED 0x30
 #define I2C_ARBITRATION_LOST 0x38
 
-#define SLAVE_ADDR 0x10
+#define SLAVE_ADDR 0x20
 #define WRITE_BIT 0
 
 // start - inclusive, end - exclusive 
