@@ -38,23 +38,23 @@ void Led_ShowByte(unsigned char ucLedsOn){
 
 void Can1_InitAsTX(void)
 {
-	PINSEL1 	|= 		CAN1_RX;			  				//Enable Pin 0.25 as CAN1 RX
-	C1MOD 		= 		RM;											//Set CAN controller into reset
-	C1BTR 		= 		BIT_TIMING_125k;				//Set bit timing to 125k
-	C1TFI1 		= 		DLC_LEN_1_BYTE;					//Set DLC to 1 byte 
-	C1CMR			= 		STB1;										// Select Tx Buffer 1 for transmission
-	C1MOD 		= 		!RM;										//Release CAN controller
+	PINSEL1 	|= 		CAN1_RX;
+	C1MOD 		= 		RM;
+	C1BTR 		= 		BIT_TIMING_125k;
+	C1TFI1 		= 		DLC_LEN_1_BYTE;
+	C1CMR			= 		STB1;
+	C1MOD 		= 		!RM;
 }
 
 void Can2_InitAsRX(void)
 {
-	PINSEL1 	|= 		CAN2_RX|CAN2_TX;				// Enable Pin.023 as CAN2 RX
-	C2MOD 		= 		RM;											//Set CAN controller into reset
-	C2BTR 		= 		BIT_TIMING_125k;							//Set bit timing to 125k
+	PINSEL1 	|= 		CAN2_RX|CAN2_TX;
+	C2MOD 		= 		RM;
+	C2BTR 		= 		BIT_TIMING_125k;
 	
 	C2CMR 		= 		RRB;
-	AFMR 			=			ACC_BP|ACC_OFF;					//Disable the Acceptance filters and accept all Rx msg
-	C2MOD 		= 		!RM;										//Release CAN controller
+	AFMR 			=			ACC_BP|ACC_OFF;
+	C2MOD 		= 		!RM;
 }
 
 
@@ -68,9 +68,9 @@ unsigned char ucCan1_TxFree(void)
 
 void Can1_SendByte(unsigned char ucMsg)
 {
-	C1TID1 		= 		STD_11_BITS_FRAME;					//Set address to 0x22 Standard Frame
-	C1TDA1 		= 		ucMsg;											// Data to transmit
-	C1CMR 		|= 		TR;													// Transmission request
+	C1TID1 		= 		STD_11_BITS_FRAME;
+	C1TDA1 		= 		ucMsg;
+	C1CMR 		|= 		TR;
 }
 
 unsigned char ucCan2_RxReady(void)
@@ -85,7 +85,7 @@ unsigned char ucCan2_RxReady(void)
 unsigned char ucCan2_ReceiveByte(void)
 {
 	unsigned char ucReceivedBytes = C2RDA;
-	C2CMR =	RRB; 													//release the recieve buffer
+	C2CMR =	RRB;
 	return ucReceivedBytes;
 }
 
